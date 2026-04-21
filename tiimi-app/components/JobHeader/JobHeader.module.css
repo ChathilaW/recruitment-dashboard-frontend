@@ -148,7 +148,11 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.375rem;
+  cursor: pointer;
+  border: none;
+  min-width: 96px;
 }
 
 .tagSuccess .iconTiny {
@@ -159,6 +163,33 @@
   width: 6px;
   height: 6px;
   background-color: #22C55E;
+  border-radius: 50%;
+}
+
+.tagDanger {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  cursor: pointer;
+  border: none;
+  min-width: 96px;
+}
+
+.tagDanger .iconTiny {
+  color: #991B1B;
+}
+
+.dotDanger {
+  width: 6px;
+  height: 6px;
+  background-color: #EF4444;
   border-radius: 50%;
 }
 

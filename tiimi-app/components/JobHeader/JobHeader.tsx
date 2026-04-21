@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import styles from './JobHeader.module.css';
 import { 
   ArrowLeftIcon, 
@@ -33,6 +35,12 @@ const TABS = [
 ];
 
 const JobHeader: React.FC<JobHeaderProps> = ({ activeTab = 'Candidates', onTabChange }) => {
+  const [jobStatus, setJobStatus] = useState<'Open' | 'Closed'>('Open');
+
+  const toggleStatus = () => {
+    setJobStatus(prev => prev === 'Open' ? 'Closed' : 'Open');
+  };
+
   return (
     <div className={styles.jobHeader}>
       <div className={styles.topRow}>
@@ -62,11 +70,14 @@ const JobHeader: React.FC<JobHeaderProps> = ({ activeTab = 'Candidates', onTabCh
       </div>
 
       <div className={styles.metaRow}>
-        <div className={styles.tagSuccess}>
-          <span className={styles.dot}></span>
-          Open
+        <button 
+          className={jobStatus === 'Open' ? styles.tagSuccess : styles.tagDanger}
+          onClick={toggleStatus}
+        >
+          <span className={jobStatus === 'Open' ? styles.dot : styles.dotDanger}></span>
+          {jobStatus}
           <ChevronDownIcon className={styles.iconTiny} />
-        </div>
+        </button>
         <div className={styles.metaItem}>
           <MagnifyingGlassIcon className={styles.iconTiny} /> Researcher
         </div>
