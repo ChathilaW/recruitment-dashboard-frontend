@@ -63,8 +63,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
           {openDropdown === 'date' && (
             <div className={styles.dropdownMenu}>
               <div className={styles.dropdownItem} onClick={() => handleSelect('date', 'All')}>All Time</div>
-              <div className={styles.dropdownItem} onClick={() => handleSelect('date', 'Oct 2023')}>Oct 2023</div>
-              <div className={styles.dropdownItem} onClick={() => handleSelect('date', 'Sep 2023')}>Sep 2023</div>
+              <div className={styles.dropdownItem} onClick={() => handleSelect('date', 'Dec 2025')}>Dec 2025</div>
+              <div className={styles.dropdownItem} onClick={() => handleSelect('date', 'Jan 2026')}>Jan 2026</div>
             </div>
           )}
         </div>

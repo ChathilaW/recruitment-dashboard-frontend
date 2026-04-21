@@ -25,8 +25,8 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
       if (scoreFilter === '3.0+' && c.rating < 3.0) return false;
       
       // Date filter (dummy check based on the mocked strings)
-      if (dateFilter === 'Oct 2023' && !c.appliedDate.includes('Oct, 2023')) return false;
-      if (dateFilter === 'Sep 2023' && !c.appliedDate.includes('Sep, 2023')) return false;
+      if (dateFilter === 'Dec 2025' && !c.appliedDate.includes('Dec, 2025')) return false;
+      if (dateFilter === 'Jan 2026' && !c.appliedDate.includes('Jan, 2026')) return false;
 
       return true;
     });
