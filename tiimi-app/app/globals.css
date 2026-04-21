@@ -1,49 +1,29 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sidebar-bg: #1A1A24;
+  --sidebar-icon-color: #6B7280; /* Gray-500 */
+  --sidebar-icon-hover: #D1D5DB; /* Gray-300 */
+  --sidebar-active-bg: #2D2D44;
+  --sidebar-active-color: #FFFFFF;
+  --sidebar-notification: #F97316; /* Orange-500 */
+  
+  --main-bg: #F5F6FA;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--main-bg);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  color: inherit;
 }
