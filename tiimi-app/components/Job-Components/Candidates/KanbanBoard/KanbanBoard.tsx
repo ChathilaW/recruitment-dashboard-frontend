@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import styles from './KanbanBoard.module.css';
 import { pipelineData } from '@/data/dummyData';
 import KanbanColumn from '../KanbanColumn/KanbanColumn';
@@ -14,7 +16,36 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   dateFilter = 'All', 
   scoreFilter = 'All' 
 }) => {
-  const filteredData = pipelineData.map(column => {
+  const [boardData, setBoardData] = useState(pipelineData);
+
+  const handleMoveCandidate = (candidateId: string, sourceColId: string, destColId: string) => {
+    if (sourceColId === destColId) return;
+
+    setBoardData(prev => {
+      // Create a deep copy of the board data
+      const newBoard = JSON.parse(JSON.stringify(prev));
+      
+      const sourceColIndex = newBoard.findIndex((c: any) => c.id === sourceColId);
+      const destColIndex = newBoard.findIndex((c: any) => c.id === destColId);
+      
+      if (sourceColIndex === -1 || destColIndex === -1) return prev;
+
+      const candidateIndex = newBoard[sourceColIndex].candidates.findIndex((c: any) => c.id === candidateId);
+      if (candidateIndex === -1) return prev;
+
+      // Remove from source and push to destination
+      const [movedCandidate] = newBoard[sourceColIndex].candidates.splice(candidateIndex, 1);
+      newBoard[destColIndex].candidates.push(movedCandidate);
+
+      // Update counts
+      newBoard[sourceColIndex].count = newBoard[sourceColIndex].candidates.length;
+      newBoard[destColIndex].count = newBoard[destColIndex].candidates.length;
+
+      return newBoard;
+    });
+  };
+
+  const filteredData = boardData.map(column => {
     const lowerSearch = searchTerm.toLowerCase();
     const filteredCandidates = column.candidates.filter(c => {
       // Search filter
@@ -42,7 +73,11 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
     <div className={styles.boardContainer}>
       <div className={styles.boardScroll}>
         {filteredData.map((column) => (
-          <KanbanColumn key={column.id} column={column} />
+          <KanbanColumn 
+            key={column.id} 
+            column={column} 
+            onMoveCandidate={handleMoveCandidate} 
+          />
         ))}
       </div>
     </div>

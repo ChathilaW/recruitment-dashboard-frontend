@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import styles from './KanbanColumn.module.css';
 import { Column } from '@/data/dummyData';
@@ -6,11 +8,26 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
 interface KanbanColumnProps {
   column: Column;
+  onMoveCandidate: (candidateId: string, sourceColId: string, destColId: string) => void;
 }
 
-const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
+const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, onMoveCandidate }) => {
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault(); // allow drop
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const candidateId = e.dataTransfer.getData('candidateId');
+    const sourceColId = e.dataTransfer.getData('sourceColId');
+    
+    if (candidateId && sourceColId) {
+      onMoveCandidate(candidateId, sourceColId, column.id);
+    }
+  };
+
   return (
-    <div className={styles.column}>
+    <div className={styles.column} onDragOver={handleDragOver} onDrop={handleDrop}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           <div 
@@ -28,7 +45,11 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column }) => {
 
       <div className={styles.cardList}>
         {column.candidates.map((candidate) => (
-          <CandidateCard key={candidate.id} candidate={candidate} />
+          <CandidateCard 
+            key={candidate.id} 
+            candidate={candidate} 
+            columnId={column.id} 
+          />
         ))}
       </div>
     </div>

@@ -10,12 +10,14 @@ import { EllipsisHorizontalIcon, UserPlusIcon } from '@heroicons/react/24/outlin
 
 interface CandidateCardProps {
   candidate: Candidate;
+  columnId: string;
 }
 
-const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
+const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, columnId }) => {
   const [currentRating, setCurrentRating] = useState(candidate.rating);
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleAddAssessment = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -37,8 +39,46 @@ const CandidateCard: React.FC<CandidateCardProps> = ({ candidate }) => {
     }
   };
 
+  const handleDragStart = (e: React.DragEvent) => {
+    setIsDragging(true);
+    e.dataTransfer.setData('candidateId', candidate.id);
+    e.dataTransfer.setData('sourceColId', columnId);
+
+    // Create a custom drag image to make it more visible
+    const target = e.currentTarget as HTMLElement;
+    const clone = target.cloneNode(true) as HTMLElement;
+    clone.style.backgroundColor = 'var(--card-bg)';
+    clone.style.border = '2px solid var(--primary-accent)';
+    clone.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.2)';
+    clone.style.transform = 'rotate(4deg)';
+    clone.style.position = 'absolute';
+    clone.style.top = '-9999px';
+    clone.style.left = '-9999px';
+    clone.style.width = `${target.offsetWidth}px`;
+    document.body.appendChild(clone);
+    
+    // Set the drag image
+    e.dataTransfer.setDragImage(clone, target.offsetWidth / 2, target.offsetHeight / 2);
+
+    // Clean up the clone from the DOM
+    setTimeout(() => {
+      if (document.body.contains(clone)) {
+        document.body.removeChild(clone);
+      }
+    }, 0);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
-    <div className={styles.card}>
+    <div 
+      className={`${styles.card} ${isDragging ? styles.dragging : ''}`} 
+      draggable 
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       <div className={styles.header}>
         <Image 
           src={candidate.avatar} 
