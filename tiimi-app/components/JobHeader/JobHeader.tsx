@@ -17,7 +17,22 @@ import {
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
-const JobHeader = () => {
+interface JobHeaderProps {
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
+}
+
+const TABS = [
+  { name: 'Candidates', icon: UserGroupIcon },
+  { name: 'Job Info', icon: BriefcaseIcon },
+  { name: 'Calendar', icon: CalendarIcon },
+  { name: 'Score Card', icon: ClipboardDocumentCheckIcon },
+  { name: 'Activity', icon: ChartBarIcon },
+  { name: 'Application Form', icon: DocumentTextIcon },
+  { name: 'Automation', icon: CogIcon, badge: 5 },
+];
+
+const JobHeader: React.FC<JobHeaderProps> = ({ activeTab = 'Candidates', onTabChange }) => {
   return (
     <div className={styles.jobHeader}>
       <div className={styles.topRow}>
@@ -66,27 +81,19 @@ const JobHeader = () => {
       </div>
 
       <div className={styles.tabsRow}>
-        <button className={`${styles.tab} ${styles.activeTab}`}>
-          <UserGroupIcon className={styles.tabIcon} /> Candidates
-        </button>
-        <button className={styles.tab}>
-          <BriefcaseIcon className={styles.tabIcon} /> Job Info
-        </button>
-        <button className={styles.tab}>
-          <CalendarIcon className={styles.tabIcon} /> Calendar
-        </button>
-        <button className={styles.tab}>
-          <ClipboardDocumentCheckIcon className={styles.tabIcon} /> Score Card
-        </button>
-        <button className={styles.tab}>
-          <ChartBarIcon className={styles.tabIcon} /> Activity
-        </button>
-        <button className={styles.tab}>
-          <DocumentTextIcon className={styles.tabIcon} /> Application Form
-        </button>
-        <button className={styles.tab}>
-          <CogIcon className={styles.tabIcon} /> Automation <span className={styles.tabBadge}>5</span>
-        </button>
+        {TABS.map((tab) => {
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.name}
+              className={`${styles.tab} ${activeTab === tab.name ? styles.activeTab : ''}`}
+              onClick={() => onTabChange && onTabChange(tab.name)}
+            >
+              <Icon className={styles.tabIcon} /> {tab.name}
+              {tab.badge && <span className={styles.tabBadge}>{tab.badge}</span>}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
