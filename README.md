@@ -8,9 +8,9 @@
 
 A responsive, interactive recruitment dashboard built with Next.js (App Router), React, and CSS Modules. It features a drag-and-drop Kanban board for candidate pipelines, job filtering, and a fully responsive design.
 
+#### 
 
-
-#### **Tech Stack**
+#### **💻 Tech Stack**
 
 * **Core Framework:** Next.js (App Router)
 * **UI Library:** React
@@ -22,7 +22,7 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 
 
 
-#### **Setup \& Running the Frontend**
+#### **🚀 Setup \& Running the Frontend**
 
 ##### Prerequisites
 
