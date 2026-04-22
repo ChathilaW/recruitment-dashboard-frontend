@@ -16,7 +16,7 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 * **UI Library:** React
 * **Language:** TypeScript
 * **Styling:** Vanilla CSS Modules
-* **Icons:** Heroicons](https://heroicons.com/)
+* **Icons:** Heroicons (https://heroicons.com/)
 * **Calendar:** FullCalendar (https://fullcalendar.io/)
 * **Deployment:** Vercel (https://recruitment-dashboard-frontend-six.vercel.app/jobs)
 
