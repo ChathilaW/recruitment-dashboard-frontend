@@ -40,7 +40,7 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 ##### Running Locally
 
 1. while in the application folder:  npm run dev
-2. Open:  http://localhost...
+2. Open:  http://localhost:3000/
 
 
 
