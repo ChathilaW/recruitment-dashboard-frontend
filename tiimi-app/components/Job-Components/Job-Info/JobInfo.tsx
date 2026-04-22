@@ -10,6 +10,7 @@ import {
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
 
+//AI-generated job information to use as a placeholder and for initial frontend development
 const JobInfo = () => {
   return (
     // Outer wrapper allowing the job information card to scroll independently
