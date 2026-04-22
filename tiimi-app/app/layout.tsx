@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Header from "@/components/Header/Header";
 import styles from "./layout.module.css";
+import { SidebarProvider } from "./SidebarContext";
 
 export default function RootLayout({
   children,
@@ -29,13 +30,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-        <div className={styles.page}>
-          <Sidebar />
-          <Header />
-          <main className={styles.mainContent}>
-            {children}
-          </main>
-        </div>
+        <SidebarProvider>
+          <div className={styles.page}>
+            <Sidebar />
+            <Header />
+            <main className={styles.mainContent}>
+              {children}
+            </main>
+          </div>
+        </SidebarProvider>
       </body>
     </html>
   );

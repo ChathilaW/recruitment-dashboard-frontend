@@ -183,3 +183,31 @@
   object-fit: cover;
   background-color: #E5E7EB; /* placeholder fallback bg */
 }
+
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    left: 0;
+    padding: 0 1rem;
+  }
+  .center {
+    display: none;
+  }
+  .left {
+    gap: 0.5rem;
+  }
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

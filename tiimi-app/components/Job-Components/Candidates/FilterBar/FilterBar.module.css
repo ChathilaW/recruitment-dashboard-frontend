@@ -146,3 +146,22 @@
   color: var(--text-primary);
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .leftGroup {
+    flex-wrap: wrap;
+  }
+  .searchBox {
+    width: 100%;
+  }
+  .rightGroup {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

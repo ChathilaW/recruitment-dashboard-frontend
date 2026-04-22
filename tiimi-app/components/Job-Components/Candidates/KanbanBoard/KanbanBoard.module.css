@@ -32,3 +32,10 @@
 .boardScroll::-webkit-scrollbar-thumb:hover {
   background: #94A3B8; 
 }
+
+@media (max-width: 768px) {
+  .boardContainer {
+    padding: 0 1rem 1rem 1rem;
+    height: calc(100vh - 64px - 200px - 140px); /* rough calculation for mobile headers wrapping */
+  }
+}

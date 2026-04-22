@@ -1,20 +1,29 @@
+"use client";
+
 import React from 'react';
 import styles from './Header.module.css';
 import { 
   PlusIcon, 
   MagnifyingGlassIcon, 
   BellIcon,
-  Squares2X2Icon
+  Bars3Icon
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import { useSidebar } from '@/app/SidebarContext';
 
 const Header = () => {
+  const { toggle } = useSidebar();
+
   return (
     // Main header element that spans the top of the dashboard
     <header className={styles.header}>
       
       {/* Left section: App branding and module title */}
       <div className={styles.left}>
+        <button className={styles.mobileMenuBtn} onClick={toggle}>
+          <Bars3Icon className={styles.iconSmall} />
+        </button>
+
         <div className={styles.brand}>
           {/* Logo image rendered using Next.js optimized Image component */}
           <Image src="/images/tiimi-logo.png" alt="tiimi logo" width={20} height={20} className={styles.brandIcon} />

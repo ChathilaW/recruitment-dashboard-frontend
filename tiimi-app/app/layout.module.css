@@ -14,3 +14,9 @@
   overflow: hidden;
   background-color: var(--main-bg);
 }
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
+}
