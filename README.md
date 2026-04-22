@@ -31,16 +31,16 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 
 ##### Installation
 
-1. Clone the repository and navigate to the project root: cd recruitment-dashboard-frontend
-2. Navigate into the Next.js application folder: cd tiimi-app
-3. Install the required dependencies: npm install
+1. Clone the repository and navigate to the project root:  cd recruitment-dashboard-frontend
+2. Navigate into the Next.js application folder:  cd tiimi-app
+3. Install the required dependencies:  npm install
 
 
 
 ##### Running Locally
 
-1. while in the application folder: npm run dev
-2. Open: http://localhost...
+1. while in the application folder:  npm run dev
+2. Open:  http://localhost...
 
 
 
