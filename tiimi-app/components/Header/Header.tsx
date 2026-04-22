@@ -46,7 +46,7 @@ const Header = () => {
           <span className={styles.notificationDot}></span>
         </button>
         <div className={styles.profile}>
-          <Image src="/images/Placeholder.png" alt="Profile" width={36} height={36} className={styles.avatar} />
+          <Image src="/images/Bogus Friki - User.png" alt="Profile" width={36} height={36} className={styles.avatar} />
         </div>
       </div>
     </header>

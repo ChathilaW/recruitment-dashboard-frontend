@@ -86,7 +86,7 @@ const JobHeader: React.FC<JobHeaderProps> = ({ activeTab = 'Candidates', onTabCh
         </div>
         <div className={styles.metaItem}>
           <UserIcon className={styles.iconTiny} /> Created by 
-          <Image src="/images/Placeholder.png" alt="Bogus" width={20} height={20} className={styles.metaAvatar} />
+          <Image src="/images/Bogus Friki - User.png" alt="Bogus" width={20} height={20} className={styles.metaAvatar} />
           <span className={styles.creatorName}>Bogus Fikri</span>
         </div>
       </div>
