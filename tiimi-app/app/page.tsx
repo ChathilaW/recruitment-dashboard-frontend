@@ -7,6 +7,7 @@ import Header from "../components/Header/Header";
 import JobHeader from "../components/JobHeader/JobHeader";
 import FilterBar from "@/components/Job-Components/Candidates/FilterBar/FilterBar";
 import KanbanBoard from "@/components/Job-Components/Candidates/KanbanBoard/KanbanBoard";
+import JobCalendar from "@/components/Job-Components/Calendar/JobCalendar";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Candidates");
@@ -36,6 +37,8 @@ export default function Home() {
               scoreFilter={scoreFilter}
             />
           </>
+        ) : activeTab === "Calendar" ? (
+          <JobCalendar />
         ) : (
           <div style={{ padding: "2rem", textAlign: "center", color: "var(--text-secondary)" }}>
             {activeTab} content is not implemented yet.
