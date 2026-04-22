@@ -26,7 +26,7 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 
 ##### Prerequisites
 
-* Node.js (v18 or higher recommended)
+* Node.js
 * npm or yarn
 
 ##### Installation
