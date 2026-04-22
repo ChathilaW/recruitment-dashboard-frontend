@@ -18,7 +18,7 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 * **Styling:** Vanilla CSS Modules
 * **Icons:** Heroicons (https://heroicons.com/)
 * **Calendar:** FullCalendar (https://fullcalendar.io/)
-* **Deployment:** Vercel (https://recruitment-dashboard-frontend-six.vercel.app/jobs)
+* **Deployment:** Vercel (https://recruitment-dashboard-frontend-six.vercel.app)
 
 
 
@@ -58,5 +58,5 @@ A responsive, interactive recruitment dashboard built with Next.js (App Router),
 #### **Additional sources**
 
 * **GitHub repository:** https://github.com/ChathilaW/Recruitment-Dashboard-frontend
-* **Vercel deployment:** https://recruitment-dashboard-frontend-six.vercel.app/jobs
+* **Vercel deployment:** https://recruitment-dashboard-frontend-six.vercel.app
 
