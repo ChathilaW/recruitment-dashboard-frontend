@@ -5,6 +5,7 @@ import JobHeader from "@/components/JobHeader/JobHeader";
 import FilterBar from "@/components/Job-Components/Candidates/FilterBar/FilterBar";
 import KanbanBoard from "@/components/Job-Components/Candidates/KanbanBoard/KanbanBoard";
 import JobCalendar from "@/components/Job-Components/Calendar/JobCalendar";
+import JobInfo from "@/components/Job-Components/Job-Info/JobInfo";
 
 export default function JobsPage() {
   const [activeTab, setActiveTab] = useState("Candidates");
@@ -31,6 +32,8 @@ export default function JobsPage() {
             scoreFilter={scoreFilter}
           />
         </>
+      ) : activeTab === "Job Info" ? (
+        <JobInfo />
       ) : activeTab === "Calendar" ? (
         <JobCalendar />
       ) : (
