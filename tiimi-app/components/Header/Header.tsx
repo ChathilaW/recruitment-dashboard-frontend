@@ -6,7 +6,6 @@ import {
   BellIcon,
   Squares2X2Icon
 } from '@heroicons/react/24/outline';
-import { Squares2X2Icon as SquaresSolidIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 
 const Header = () => {
@@ -14,11 +13,13 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.left}>
         <div className={styles.brand}>
-          <SquaresSolidIcon className={styles.brandIcon} />
+          <Image src="/images/tiimi-logo.png" alt="tiimi logo" width={20} height={20} className={styles.brandIcon} />
           <span className={styles.brandName}>tiimi</span>
           <span className={styles.pageTitle}>Recruitment</span>
         </div>
-        
+      </div>
+
+      <div className={styles.center}>
         <div className={styles.stats}>
           <div className={styles.statItem}>
             <span className={styles.statLabel}>Jobs</span>
