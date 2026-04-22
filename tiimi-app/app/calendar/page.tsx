@@ -1,10 +1,25 @@
+"use client";
+
 import React from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import styles from './Calendar.module.css';
 
 export default function CalendarPage() {
   return (
-    <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-      <h2>Calendar</h2>
-      <p>Under development</p>
+    <div className={styles.calendarContainer}>
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        }}
+        events={[]} // Empty calendar
+        height="100%"
+        contentHeight="auto"
+      />
     </div>
   );
 }
