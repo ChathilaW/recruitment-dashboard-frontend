@@ -66,7 +66,6 @@ const Sidebar = () => {
         </Link>
       </nav>
 
-      
       <div className={styles.bottomNav}>
         <div className={styles.fullDivider}></div>
         <Link href="/settings" className={`${styles.navItem} ${pathname === '/settings' ? styles.active : ''}`}>
