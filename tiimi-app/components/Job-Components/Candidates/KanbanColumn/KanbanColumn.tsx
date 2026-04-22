@@ -5,13 +5,21 @@ import styles from './KanbanColumn.module.css';
 import { Column } from '@/data/dummyData';
 import CandidateCard from '../CandidateCard/CandidateCard';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { Candidate } from '@/data/dummyData';
 
 interface KanbanColumnProps {
   column: Column;
   onMoveCandidate: (candidateId: string, sourceColId: string, destColId: string) => void;
+  onSelectCandidate: (candidate: Candidate) => void;
+  onUpdateRating: (candidateId: string, newRating: number) => void;
 }
 
-const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, onMoveCandidate }) => {
+const KanbanColumn: React.FC<KanbanColumnProps> = ({ 
+  column, 
+  onMoveCandidate, 
+  onSelectCandidate, 
+  onUpdateRating
+}) => {
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault(); // allow drop
   };
@@ -49,6 +57,8 @@ const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, onMoveCandidate }) 
             key={candidate.id} 
             candidate={candidate} 
             columnId={column.id} 
+            onClick={() => onSelectCandidate(candidate)}
+            onUpdateRating={onUpdateRating}
           />
         ))}
       </div>

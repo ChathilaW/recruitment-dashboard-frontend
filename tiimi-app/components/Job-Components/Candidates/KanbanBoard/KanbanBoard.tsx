@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import styles from './KanbanBoard.module.css';
-import { pipelineData } from '@/data/dummyData';
+import { pipelineData, Candidate } from '@/data/dummyData';
 import KanbanColumn from '../KanbanColumn/KanbanColumn';
+import CandidateModal from '../CandidateModal/CandidateModal';
 
 interface KanbanBoardProps {
   searchTerm?: string;
@@ -17,6 +18,25 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
   scoreFilter = 'All' 
 }) => {
   const [boardData, setBoardData] = useState(pipelineData);
+  const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
+
+  const activeCandidate = selectedCandidateId 
+    ? boardData.flatMap(col => col.candidates).find(c => c.id === selectedCandidateId)
+    : null;
+
+  const handleUpdateRating = (candidateId: string, newRating: number) => {
+    setBoardData(prev => {
+      const newBoard = JSON.parse(JSON.stringify(prev));
+      for (const col of newBoard) {
+        const candidate = col.candidates.find((c: any) => c.id === candidateId);
+        if (candidate) {
+          candidate.rating = newRating;
+          break;
+        }
+      }
+      return newBoard;
+    });
+  };
 
   const handleMoveCandidate = (candidateId: string, sourceColId: string, destColId: string) => {
     if (sourceColId === destColId) return;
@@ -77,9 +97,18 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
             key={column.id} 
             column={column} 
             onMoveCandidate={handleMoveCandidate} 
+            onSelectCandidate={(c) => setSelectedCandidateId(c.id)}
+            onUpdateRating={handleUpdateRating}
           />
         ))}
       </div>
+      
+      {activeCandidate && (
+        <CandidateModal 
+          candidate={activeCandidate} 
+          onClose={() => setSelectedCandidateId(null)} 
+        />
+      )}
     </div>
   );
 };

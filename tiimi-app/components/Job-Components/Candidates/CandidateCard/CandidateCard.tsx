@@ -11,10 +11,16 @@ import { EllipsisHorizontalIcon, UserPlusIcon } from '@heroicons/react/24/outlin
 interface CandidateCardProps {
   candidate: Candidate;
   columnId: string;
+  onClick: () => void;
+  onUpdateRating: (candidateId: string, newRating: number) => void;
 }
 
-const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, columnId }) => {
-  const [currentRating, setCurrentRating] = useState(candidate.rating);
+const CandidateCard: React.FC<CandidateCardProps> = ({ 
+  candidate, 
+  columnId, 
+  onClick, 
+  onUpdateRating
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isDragging, setIsDragging] = useState(false);
@@ -27,7 +33,7 @@ const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, columnId }) =>
   const handleInputBlur = () => {
     const val = parseFloat(inputValue);
     if (!isNaN(val) && val > 0 && val <= 5) {
-      setCurrentRating(val);
+      onUpdateRating(candidate.id, val);
     }
     setIsEditing(false);
     setInputValue("");
@@ -78,6 +84,7 @@ const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, columnId }) =>
       draggable 
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      onClick={onClick}
     >
       <div className={styles.header}>
         <Image 
@@ -94,10 +101,10 @@ const CandidateCard: React.FC<CandidateCardProps> = ({ candidate, columnId }) =>
       </div>
       
       <div className={styles.footer}>
-        {currentRating > 0 ? (
+        {candidate.rating > 0 ? (
           <div className={styles.rating}>
             <StarIconSolid className={styles.starIcon} />
-            <span className={styles.ratingText}>{currentRating} Overall</span>
+            <span className={styles.ratingText}>{candidate.rating} Overall</span>
           </div>
         ) : isEditing ? (
           <input
